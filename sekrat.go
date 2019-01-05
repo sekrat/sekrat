@@ -1,22 +1,32 @@
-package pylades
+// Package sekrat provides an embedded key/value store for an application that
+// supports pluggable storage and encryption schemes.
+package sekrat
 
 import (
 	"errors"
 )
 
+// New instantiats a Manager for managing secrets.
 func New(warehouse Warehouse, crypter Crypter) *Manager {
 	return &Manager{Warehouse: warehouse, Crypter: crypter}
 }
 
+// A Manager orchestrates operations between a Warehouse and a Crypter to
+// securely store secrets, retrieve secrets, and list the IDs of all known
+// secrets.
 type Manager struct {
 	Warehouse Warehouse
 	Crypter   Crypter
 }
 
+// IDs returns the IDs for all secrets that the manager manages.
 func (manager *Manager) IDs() []string {
 	return manager.Warehouse.IDs()
 }
 
+// Put takes a secret ID, an encryption key, and a chunk of data, encrypts
+// that data, and stores it indexed by ID. If all goes according to plan, a nil
+// error is returned. Otherwise, an actual error is returned.
 func (manager *Manager) Put(id string, key string, data []byte) error {
 	crypted, err := manager.Crypter.Encrypt(key, data)
 	if err != nil {
@@ -31,6 +41,10 @@ func (manager *Manager) Put(id string, key string, data []byte) error {
 	return nil
 }
 
+// Get takes a secret ID and an encryption key, and it returns a decrypted
+// secret and an error. If all goes according to plan, the decrypted secret is
+// populated and the error is nil. Otherwise, the secret is nil and the error
+// is not.
 func (manager *Manager) Get(id string, key string) ([]byte, error) {
 	crypted, err := manager.Warehouse.Retrieve(id)
 	if err != nil {
@@ -45,12 +59,14 @@ func (manager *Manager) Get(id string, key string) ([]byte, error) {
 	return data, nil
 }
 
+// Warehouse is an interface that must be implemented by a storage plugin
 type Warehouse interface {
 	IDs() []string
 	Store(string, []byte) error
 	Retrieve(string) ([]byte, error)
 }
 
+// Crypter is an interface that must be implemented by an encryption plugin
 type Crypter interface {
 	Encrypt(string, []byte) ([]byte, error)
 	Decrypt(string, []byte) ([]byte, error)
