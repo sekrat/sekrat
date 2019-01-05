@@ -39,15 +39,7 @@ func (warehouse *MemoryWarehouse) Store(id string, data []byte) error {
 func (warehouse *MemoryWarehouse) Retrieve(id string) ([]byte, error) {
 	warehouse.setup()
 
-	found := false
-	for _, key := range warehouse.IDs() {
-		if key == id {
-			found = true
-			break
-		}
-	}
-
-	if !found {
+	if !contains(id, warehouse.IDs()) {
 		return nil, errors.New("not found")
 	}
 
@@ -63,4 +55,14 @@ func (warehouse *MemoryWarehouse) setup() {
 // NewMemoryWarehouse creates a new MemoryWarehouse for use with a Manager
 func NewMemoryWarehouse() Warehouse {
 	return &MemoryWarehouse{}
+}
+
+func contains(item string, ary []string) bool {
+	for _, k := range ary {
+		if k == item {
+			return true
+		}
+	}
+
+	return false
 }
