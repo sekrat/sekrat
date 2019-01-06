@@ -1,0 +1,6 @@
+# Common editor swap files
+*~
+*.swp
+
+# Code coverage
+coverage.out
