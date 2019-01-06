@@ -53,7 +53,7 @@ func (warehouse *MemoryWarehouse) setup() {
 }
 
 // NewMemoryWarehouse creates a new MemoryWarehouse for use with a Manager
-func NewMemoryWarehouse() Warehouse {
+func NewMemoryWarehouse() *MemoryWarehouse {
 	return &MemoryWarehouse{}
 }
 

@@ -21,6 +21,6 @@ func (crypter *PassthroughCrypter) Decrypt(key string, data []byte) ([]byte, err
 
 // NewPassthroughCrypter creates and returns a PassthroughCrypter for use with
 // a Manager.
-func NewPassthroughCrypter() Crypter {
+func NewPassthroughCrypter() *PassthroughCrypter {
 	return &PassthroughCrypter{}
 }

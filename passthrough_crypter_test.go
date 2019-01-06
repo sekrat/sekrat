@@ -4,18 +4,6 @@ import (
 	"testing"
 )
 
-func TestNewPassthroughCrypter(t *testing.T) {
-	crypter := NewPassthroughCrypter()
-
-	t.Run("it is a passthrough crypter", func(t *testing.T) {
-		_, ok := crypter.(*PassthroughCrypter)
-
-		if !ok {
-			t.Errorf("Expected a passthrough crypter, but got something else")
-		}
-	})
-}
-
 func TestPassthroughCrypter_Encrypt(t *testing.T) {
 	key := "super secret"
 	data := []byte("oh so secret data")

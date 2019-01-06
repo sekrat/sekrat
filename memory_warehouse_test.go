@@ -4,17 +4,17 @@ import (
 	"testing"
 )
 
-func TestNewMemoryWarehouse(t *testing.T) {
-	warehouse := NewMemoryWarehouse()
+//func TestNewMemoryWarehouse(t *testing.T) {
+//warehouse := NewMemoryWarehouse()
 
-	t.Run("it is a MemoryWarehouse", func(t *testing.T) {
-		_, ok := warehouse.(*MemoryWarehouse)
+//t.Run("it is a MemoryWarehouse", func(t *testing.T) {
+//_, ok := warehouse.(*MemoryWarehouse)
 
-		if !ok {
-			t.Errorf("Expected a memory warehouse, but got something else")
-		}
-	})
-}
+//if !ok {
+//t.Errorf("Expected a memory warehouse, but got something else")
+//}
+//})
+//}
 
 func TestMemoryWarehouse_IDs(t *testing.T) {
 	warehouse := &MemoryWarehouse{}
