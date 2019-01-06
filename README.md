@@ -77,6 +77,7 @@ A reference implementation, `PassthroughCrypter`, is included in the base packag
 
 ## History ##
 
+* v1.0.1 - Quick doc fix
 * v1.0.0 - Initial Release
 
 ## License ##
