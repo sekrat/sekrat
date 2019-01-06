@@ -75,6 +75,10 @@ A reference implementation, `PassthroughCrypter`, is included in the base packag
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create new Pull Request against the "develop" branch
 
+## History ##
+
+* v1.0.0 - Initial Release
+
 ## License ##
 
 Sekrat is released under the Apache 2.0 license. See [LICENSE](https://github.com/sekrat/sekrat/blob/master/LICSENSE)
