@@ -1,6 +1,6 @@
 Sekrat is an embedded key/value store for secrets. These secrets are stored in a Warehouse (Memory, Filesystem, Amazon S3, etc), and they are encrypted/decrypted with a Crypter (Passthrough, AES, etc).
 
-[![GoDoc](https://godoc.org/github.com/sekrat/serkat?status.svg)]
+[![GoDoc](https://godoc.org/github.com/sekrat/serkat?status.svg)](https://godoc.org/github.com/sekrat/sekrat)
 
 ## Installation ##
 
